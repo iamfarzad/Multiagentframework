@@ -1,0 +1,109 @@
+project_title: "time-tracker"
+
+# Define focus areas
+tree_focus:
+  - "frontend"
+  - "api"
+  - "database"
+
+# Included directories
+important_dirs:
+  - time-tracker-frontend/src
+  - time-tracker-backend
+
+# Excluded directories
+exclude_dirs:
+  - node_modules
+  - .git
+  - dist
+  - build
+
+# Included file types
+include_extensions:
+  - .js
+  - .jsx
+  - .json
+  - .css
+  - .yaml
+
+# Agent roles
+agents:
+  architect:
+    enabled: true
+    role: "System Design"
+    context_file: "config/architect.md"
+    focus: ["frontend", "api"]
+    learning_sources:
+      - github
+      - documentation
+    priorities:
+      - "scalability"
+      - "usability"
+
+  developer:
+    enabled: true
+    role: "Code Implementation"
+    context_file: "config/developer.md"
+    focus: ["frontend", "api"]
+    learning_sources:
+      - github
+      - stackoverflow
+    testing_frameworks:
+      - jest
+    api_keys:
+      github: "${GITHUB_API_KEY}"
+      stackoverflow: "${STACKOVERFLOW_API_KEY}"
+
+  reviewer:
+    enabled: true
+    role: "Code Review"
+    context_file: "config/reviewer.md"
+    focus: ["frontend", "api"]
+    security:
+      scanners: ["eslint"]
+      vulnerability_threshold: "HIGH"
+    performance:
+      checkers: ["lighthouse"]
+      metrics: ["time", "memory", "complexity"]
+
+  ux_ui:
+    enabled: true
+    role: "UI/UX Design"
+    context_file: "config/ux_ui.md"
+    focus: ["frontend"]
+    design_systems:
+      - tailwind
+      - material
+    accessibility:
+      standards: ["WCAG2.1"]
+      level: "AA"
+
+# Task definition for time tracker
+task:
+  name: "Time Tracker Application"
+  description: "Create a time tracking application with React frontend and FastAPI backend"
+  requirements:
+    frontend:
+      - "User-friendly time tracking interface"
+      - "Project management dashboard"
+      - "Time entry forms"
+      - "Reports and analytics"
+    backend:
+      - "RESTful API endpoints"
+      - "User authentication"
+      - "Data persistence"
+      - "Report generation"
+  technologies:
+    frontend:
+      - "React"
+      - "Tailwind CSS"
+      - "React Query"
+    backend:
+      - "FastAPI"
+      - "SQLAlchemy"
+      - "JWT"
+  learning_required: true
+  topics:
+    - "React time tracking implementation"
+    - "FastAPI REST API design"
+    - "Tailwind CSS dashboard layout" 

@@ -1,0 +1,1 @@
+function TestComponent() { return <div>Fixed</div> }
